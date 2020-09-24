@@ -37,7 +37,37 @@ int main() {
 
   // TODO write your code here
   // =========== START =========
+  if (pack_with_zeros){
+    y.push_back(x[0]* w[1] + x[1] * w[2]);
+    for (int i=1; i<x.size()-1; i++){
+      int new_y = x[i-1] * w[0] + x[i]* w[1] + x[i+1] * w[2];
+      y.push_back(new_y);
+    }
+    y.push_back(x[x.size()-2]* w[0] + x[x.size()-1] * w[1]);
 
+  }else{
+    for (int i=0; i<x.size()-2; i++){
+      int new_y = x[i] * w[0] + x[i+1]* w[1] + x[i+2] * w[2];
+      y.push_back(new_y);
+    }
+  }
+  std::cout << "x: {" << x[0];
+  for (int i=1; i<x.size(); i++){
+    std::cout << ", " << x[i];
+  }
+  std::cout << "}" << std::endl;
+
+  std::cout << "w: {" << w[0];
+  for (int i=1; i<w.size(); i++){
+    std::cout << ", " << w[i];
+  }
+  std::cout << "}" << std::endl;
+
+  std::cout << "y: {" << y[0];
+  for (int i=1; i<y.size(); i++){
+    std::cout << ", " << y[i];
+  }
+  std::cout << "}" << std::endl;
 
 
 
