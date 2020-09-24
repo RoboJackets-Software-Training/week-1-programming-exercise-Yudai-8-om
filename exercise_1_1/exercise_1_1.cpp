@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
             for (int i=0; i<wheel_speeds.size(); i++){
                 wheel_speeds[i] = 0;
             }
-            std::cout << "Shutting Down\n";
+            std::cout << "Shutting down\n";
             keep_going = false;
         } else {
             std::cout << "Sorry, I didn't get that. Try again.\n";
