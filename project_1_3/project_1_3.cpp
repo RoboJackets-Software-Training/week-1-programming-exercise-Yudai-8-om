@@ -37,20 +37,23 @@ int main() {
 
   // TODO write your code here
   // =========== START =========
-  if (pack_with_zeros){
-    y.push_back(x[0]* w[1] + x[1] * w[2]);
-    for (int i=1; i<x.size()-1; i++){
-      int new_y = x[i-1] * w[0] + x[i]* w[1] + x[i+1] * w[2];
-      y.push_back(new_y);
+  int padding = (w.size()-1)/2;
+  for (int i=0; i<x.size(); i++){
+    double sum = 0;
+    for (int j=0; j< w.size(); j++){
+      if (i+j-padding>=0 && i+j-padding < x.size()){
+        sum += x[i+j-padding] *w[j];
+      } else if(!pack_with_zeros && i+j-padding<0){
+        sum += x[0] *w[j];
+      } else if (!pack_with_zeros && i+j-padding>x.size()){
+        sum += x[x.size()-1] * w[j];
+      }
     }
-    y.push_back(x[x.size()-2]* w[0] + x[x.size()-1] * w[1]);
-
-  }else{
-    for (int i=0; i<x.size()-2; i++){
-      int new_y = x[i] * w[0] + x[i+1]* w[1] + x[i+2] * w[2];
-      y.push_back(new_y);
-    }
+    y.push_back(sum);
   }
+  
+      
+  
   std::cout << "x: {" << x[0];
   for (int i=1; i<x.size(); i++){
     std::cout << ", " << x[i];
