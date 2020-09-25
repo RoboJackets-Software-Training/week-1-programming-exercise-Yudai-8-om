@@ -45,7 +45,7 @@ int main() {
         sum += x[i+j-padding] *w[j];
       } else if(!pack_with_zeros && i+j-padding<0){
         sum += x[0] *w[j];
-      } else if (!pack_with_zeros && i+j-padding>x.size()){
+      } else if (!pack_with_zeros && i+j-padding>=x.size()){
         sum += x[x.size()-1] * w[j];
       }
     }
